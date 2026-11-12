@@ -1,0 +1,27 @@
+'use client'
+import Link from 'next/link';
+import styles from './Header.module.css';
+import { useState } from 'react';
+import Image from 'next/image';
+
+export default function Header() {
+    const [menu, setMenu] = useState('/icons/close.png')
+    return (
+
+        <div className={styles.divHeader}>
+            <button className={styles.btn}
+                onClick = {() => setMenu(menu === '/icons/close/.png'? '/icons/open.png': '/icons/close/.png')}>
+                <Image src={menu} width={30} height={30} alt='menu' />
+            </button>
+            <header className={styles.header}>
+                <nav>
+                    <ul>
+                        <li><Link href='/'>Home</Link></li>
+                        <li><Link href='/contato'>Contato</Link></li>
+                        <li><Link href='/sobre'>Sobre</Link></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+    )
+}
