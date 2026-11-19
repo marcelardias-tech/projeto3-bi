@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import styles from "./page.module.css";
 import CardProd from "@/components/CardProd";
 //se chamar de index não precisa por o arquivo uma vez que ele importa automáticamente
 
@@ -13,9 +14,9 @@ export default function Produtos() {
     useEffect(() => {
         const fetchProds = async () => {
             try {
-                const response = fetch('https://stock.dev.vilhena.ifro.edu.br/api');
+                const response = await fetch('https://stock.dev.vilhena.ifro.edu.br/api');
                 if (!response.ok) {
-                    throw new Error(`Erro ao buscar Produtos: ${await response.statusText}`)
+                    throw new Error(`Erro ao buscar Produtos: ${response.statusText}`);
                 }
                 const data = await response.json();//converte os dados json para a lista de objetos 
                 console.log(data);
@@ -30,12 +31,13 @@ export default function Produtos() {
 
     useEffect(()=>{
         const fetchCats = async () => {
-        const response = await fetch('https://stock.dev.vilhena.ifro.edu.br/api')
+        const response = await fetch('https://stock.dev.vilhena.ifro.edu.br/api/categorias')
             if (!response.ok) {
                 throw new Error (`Erro ao buscar Categorias ${response.statusText}`);
             }
             const data = await response.json();
-            console.log (data) 
+            console.log (data)
+            setCats(data);
         }
         fetchCats()        
     }, []);
@@ -58,12 +60,12 @@ export default function Produtos() {
                 ))
             }
 
-            <input type="text" placeholder="Busque um produto" onChange={(e) => setBusca(e.target.value)}/>
+            <input type="text" placeholder="Busque um produto" onChange={(e) => setBusca(e.target.value)} value={busca} />
 
             {prods === null ?
                 <p>Carregando lista de produtos...</p> :
                 <div>
-                    <table>
+                    <table className={styles.tbl}>
                         <thead>
                             <tr>
                                 <th>ID</th>

@@ -2,15 +2,14 @@
     background-color: blue;
 }
 
+.btn{
+    position: absolute;
+}
+
 @media screen and (max-width: 600px){
     .header{
         width: 100vw;
         height: 100vw;
     }
     
-}
-
-
-.btn{
-    position: absolute;
 }

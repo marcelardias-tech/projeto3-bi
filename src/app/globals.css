@@ -3,10 +3,6 @@
   --foreground: #171717;
 }
 
-main{
-  padding-top: 40px;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -46,8 +42,16 @@ a {
   text-decoration: none;
 }
 
+main {
+  padding-top: 40px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+footer {
+  background-color: yellow;
 }
