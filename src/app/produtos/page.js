@@ -79,7 +79,7 @@ export default function Produtos() {
                         <tbody>
                             {prods.map((prod) => (
 
-                                <tr Key={prod.id} onClick = {() => setProdSelected(prod)}> 
+                                <tr key={prod.id} onClick = {() => setProdSelected(prod)}> 
                                     <td>{prod.id}</td>
                                     <td>{prod.nome}</td>
                                     <td>{prod.descricao}</td>
